@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wanderson-almeida-dev.lovable.app/sitemap.xml
+
+# Block unnecessary crawling
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
