@@ -13,37 +13,45 @@ const projects = [
     image: "/lovable-uploads/1.png",
     technologies: ["React", "Next.js", "TypeScript", "Stripe", "MongoDB"],
     likes: "+2",
-    featured: true
+    featured: true,
+    github: "https://github.com/wanderson-xyz",
+    demo: "https://barber-pro-flax.vercel.app/"
   },
   {
     id: 2,
-    title: "Escritório Maciel & Associados", 
+    title: "Escritório Maciel & Associados",
     description: "Langing Page para um escritório de advogados moderno e otimizado.",
     category: "Mobile",
     image: "/lovable-uploads/4.png",
     technologies: ["React Native", "Firebase", "Redux", "Expo"],
     likes: "+1",
-    featured: true
+    featured: true,
+    github: "https://github.com/wanderson-xyz",
+    demo: "https://escritorioadvocacia.vercel.app/"
   },
   {
     id: 3,
-    title: "Langing Page para Psicóloga Dra. Fontenelle",
+    title: "Langing Page Psicóloga Fontenelle",
     description: "Langing Page para divulgação dos trabalhos da psicóloga Fontenelle.",
-    category: "Web", 
+    category: "Web",
     image: "/lovable-uploads/3.png",
     technologies: ["React", "Three.js", "GSAP", "Tailwind CSS"],
     likes: "+1",
-    featured: false
+    featured: false,
+    github: "https://github.com/wanderson-xyz",
+    demo: "https://langing-page-psicologo.vercel.app/"
   },
   {
     id: 4,
     title: "Institucional Tio Márcio",
     description: "Site criado para promover os serviços do Transporte escolar Tio Márcio.",
     category: "Web",
-    image: "/lovable-uploads/2.png", 
+    image: "/lovable-uploads/2.png",
     technologies: ["Vue.js", "D3.js", "Node.js"],
     likes: "+1",
-    featured: false
+    featured: false,
+    github: "https://github.com/wanderson-xyz",
+    demo: "https://institucional-tio-marcio.vercel.app/"
   },
   {
     id: 5,
@@ -52,8 +60,10 @@ const projects = [
     category: "Mobile",
     image: "/lovable-uploads/5.png",
     technologies: ["Flutter", "Firebase", "WebRTC"],
-    likes: "+1", 
-    featured: false
+    likes: "+1",
+    featured: false,
+    github: "https://github.com/wanderson-xyz",
+    demo: "https://auto-escola-plus.vercel.app/"
   },
   {
     id: 6,
@@ -63,7 +73,9 @@ const projects = [
     image: "/lovable-uploads/9b7b01c0-d3e4-4860-b2e3-5ec77642d910.png",
     technologies: ["Next.js", "OpenAI API", "Prisma"],
     likes: "+1",
-    featured: false
+    featured: false,
+    github: "https://github.com/wanderson-xyz",
+    demo: "https://wanderson-almeida.vercel.app/"
   }
 ]
 
@@ -71,11 +83,11 @@ const categories = ["Todos", "Web", "Mobile"]
 
 export const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("Todos")
-  
-  const filteredProjects = activeCategory === "Todos" 
-    ? projects 
+
+  const filteredProjects = activeCategory === "Todos"
+    ? projects
     : projects.filter(project => project.category === activeCategory)
-  
+
   const featuredProjects = projects.filter(project => project.featured)
 
   return (
@@ -90,7 +102,7 @@ export const Portfolio = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-brand-blue">
             Portfólio
           </h2>
-          
+
           <p className="text-lg text-text-secondary text-center mb-16 max-w-3xl mx-auto">
             Alguns dos projetos que desenvolvi, demonstrando diferentes tecnologias e abordagens.
           </p>
@@ -100,7 +112,7 @@ export const Portfolio = () => {
             <h3 className="text-2xl font-semibold text-center mb-12">
               Projetos em Destaque
             </h3>
-            
+
             <div className="grid md:grid-cols-2 gap-8">
               {featuredProjects.map((project, index) => (
                 <motion.div
@@ -111,13 +123,13 @@ export const Portfolio = () => {
                   className="group glass rounded-xl overflow-hidden hover:shadow-glow transition-all duration-300"
                 >
                   <div className="relative overflow-hidden">
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.title}
                       className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute top-4 right-4">
-                      <Badge 
+                      <Badge
                         variant={project.category === "Web" ? "default" : "secondary"}
                         className="font-medium"
                       >
@@ -125,13 +137,13 @@ export const Portfolio = () => {
                       </Badge>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <h4 className="text-xl font-semibold mb-3">{project.title}</h4>
                     <p className="text-text-secondary text-sm mb-4 leading-relaxed">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
                         <span
@@ -142,16 +154,32 @@ export const Portfolio = () => {
                         </span>
                       ))}
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <button className="p-2 hover:bg-background/50 rounded-lg transition-colors">
-                          <Github className="h-4 w-4" />
-                        </button>
-                        <button className="p-2 hover:bg-background/50 rounded-lg transition-colors">
-                          <ExternalLink className="h-4 w-4" />
-                        </button>
+                      <div className="flex gap-4 mt-4">
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                          >
+                            <Github size={20} />
+                          </a>
+                        )}
+
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                          >
+                            <ExternalLink size={20} />
+                          </a>
+                        )}
                       </div>
+
                       <span className="text-sm text-text-secondary">
                         {project.likes}
                       </span>
@@ -190,13 +218,13 @@ export const Portfolio = () => {
                 className="group glass rounded-xl overflow-hidden hover:shadow-glow transition-all duration-300"
               >
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute top-4 right-4">
-                    <Badge 
+                    <Badge
                       variant={project.category === "Web" ? "default" : "secondary"}
                       className="font-medium"
                     >
@@ -204,13 +232,13 @@ export const Portfolio = () => {
                     </Badge>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <h4 className="text-lg font-semibold mb-2">{project.title}</h4>
                   <p className="text-text-secondary text-sm mb-4 line-clamp-2">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-1 mb-4">
                     {project.technologies.slice(0, 3).map((tech) => (
                       <span
@@ -226,15 +254,30 @@ export const Portfolio = () => {
                       </span>
                     )}
                   </div>
-                  
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <button className="p-2 hover:bg-background/50 rounded-lg transition-colors">
-                        <Github className="h-4 w-4" />
-                      </button>
-                      <button className="p-2 hover:bg-background/50 rounded-lg transition-colors">
-                        <ExternalLink className="h-4 w-4" />
-                      </button>
+                      {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                          >
+                            <Github size={20} />
+                          </a>
+                        )}
+
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                          >
+                            <ExternalLink size={20} />
+                          </a>
+                        )}
                     </div>
                     <span className="text-sm text-text-secondary">
                       {project.likes}
