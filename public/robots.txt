@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://wanderson-almeida-dev.lovable.app/sitemap.xml
+Sitemap: https://wanderson-almeida.vercel.app/sitemap.xml
 
 # Block unnecessary crawling
 Disallow: /api/
